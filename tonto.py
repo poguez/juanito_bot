@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import sys
 import subprocess
 import re
@@ -20,9 +19,9 @@ import collections
 
 DEFAULTS = {
 		'server': 'irc.freenode.net',
-		'nickname': 'tontobot',
-		'channel': '#gultec',
-		'realname': 'Tonto Bot',
+		'nickname': 'Dios_Padre',
+		'channel': '#coderspuebla',
+		'realname': 'Tontus Hominidus Bot',
 		'port': 6667
 		}
 
@@ -33,7 +32,7 @@ class TontoBot(irc.bot.SingleServerIRCBot):
 	FETCH_MAX = 20 * 1024
 	URL_MAXLEN = 60 # If url is longer than this, tontobot will provide a tinified version of the url
 	MSG_MAX = 140
-	FAIL_MSGS = [':(', '):', '?', 'WAT', 'No pos no', 'link no worky', 'chupa limon']
+	FAIL_MSGS = [':(', '):', '?', 'WAT', 'No pos no', 'link no worky']
 
 	def __init__(self, serverspec, channel, nickname, realname, seen_urlpath='./seenurls.pickle'):
 		irc.bot.SingleServerIRCBot.__init__(self, [serverspec], nickname, realname)
@@ -138,6 +137,8 @@ class TontoBot(irc.bot.SingleServerIRCBot):
 				self._sendmsg(connection, self.masca())
 			elif line.startswith('ping'):
 				self._sendmsg(connection, 'pong')
+			elif line.startswith('!juanito'):
+				self._sendmsg(connection, 'Hola terricolas.')
 		except:
 			logging.exception("Failed with: %s" % line)
 		for u in get_urls(line):
